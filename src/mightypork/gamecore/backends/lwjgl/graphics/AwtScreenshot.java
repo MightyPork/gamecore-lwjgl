@@ -15,7 +15,7 @@ import mightypork.gamecore.graphics.Screenshot;
  * Screenshot object, can be used to extract image or write to file.<br>
  * Screenshot, once taken, can be safely processed in separate thread.<br>
  * Based on {@link BufferedImage} and {@link ImageIO}.
- * 
+ *
  * @author Ondřej Hruška (MightyPork)
  */
 public class AwtScreenshot implements Screenshot {
@@ -31,9 +31,10 @@ public class AwtScreenshot implements Screenshot {
 	 * @param width image width
 	 * @param height image height
 	 * @param bpp bits per pixel (typically 4)
-	 * @param buffer
+	 * @param buffer buffer with the screenshot bytes
 	 */
-	public AwtScreenshot(int width, int height, int bpp, ByteBuffer buffer) {
+	public AwtScreenshot(int width, int height, int bpp, ByteBuffer buffer)
+	{
 		this.width = width;
 		this.height = height;
 		this.bpp = bpp;
@@ -44,7 +45,7 @@ public class AwtScreenshot implements Screenshot {
 	/**
 	 * Extract to an image.<br>
 	 * Subsequent calls will use a cached value.
-	 * 
+	 *
 	 * @return image
 	 */
 	public BufferedImage getImage()
@@ -71,7 +72,7 @@ public class AwtScreenshot implements Screenshot {
 	/**
 	 * Save to a file.<br>
 	 * Cached value is used if any.
-	 * 
+	 *
 	 * @param file target file
 	 * @throws IOException on error writing to file
 	 */

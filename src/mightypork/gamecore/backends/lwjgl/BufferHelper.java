@@ -8,14 +8,14 @@ import org.lwjgl.BufferUtils;
 
 /**
  * Calc subclass with buffer utils.
- * 
+ *
  * @author Ondřej Hruška (MightyPork)
  */
 public class BufferHelper {
 	
 	/**
 	 * Create java.nio.FloatBuffer of given floats, and flip it.
-	 * 
+	 *
 	 * @param obj floats or float array
 	 * @return float buffer
 	 */
@@ -27,9 +27,9 @@ public class BufferHelper {
 	
 	/**
 	 * Fill java.nio.FloatBuffer with floats or float array
-	 * 
-	 * @param buff
-	 * @param obj
+	 *
+	 * @param buff target buffer
+	 * @param obj floats to write
 	 */
 	public static void fill(FloatBuffer buff, float... obj)
 	{
@@ -40,7 +40,7 @@ public class BufferHelper {
 	
 	/**
 	 * Create new java.nio.FloatBuffer of given length
-	 * 
+	 *
 	 * @param count elements
 	 * @return the new java.nio.FloatBuffer
 	 */

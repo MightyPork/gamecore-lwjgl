@@ -14,10 +14,10 @@ import org.newdawn.slick.openal.SoundStore;
 
 /**
  * SlickUtil-based deferred audio resource.
- * 
+ *
  * @author Ondřej Hruška (MightyPork)
  */
-public class SlickAudio extends DeferredAudio {
+public class SlickSound extends DeferredAudio {
 	
 	private double pauseLoopPosition = 0;
 	private boolean looping = false;
@@ -30,7 +30,13 @@ public class SlickAudio extends DeferredAudio {
 	private int sourceID;
 	
 	
-	public SlickAudio(String resourceName) {
+	/**
+	 * Slick-util based sound resource
+	 *
+	 * @param resourceName resource path
+	 */
+	public SlickSound(String resourceName)
+	{
 		super(resourceName);
 	}
 	
@@ -40,7 +46,7 @@ public class SlickAudio extends DeferredAudio {
 	{
 		final String ext = FileUtil.getExtension(resource);
 		
-		try (final InputStream stream = FileUtil.getResource(resource)) {
+		try(final InputStream stream = FileUtil.getResource(resource)) {
 			
 			if (ext.equalsIgnoreCase("ogg")) {
 				backingAudio = SoundStore.get().getOgg(resource, stream);

@@ -33,7 +33,7 @@ import org.newdawn.slick.opengl.GLUtils;
 
 /**
  * A TrueType font renderer with backing texture.
- * 
+ *
  * @author James Chambers (Jimmy)
  * @author Jeremy Adams (elias4444)
  * @author Kevin Glass (kevglass)
@@ -41,7 +41,7 @@ import org.newdawn.slick.opengl.GLUtils;
  * @author David Aaron Muhar (bobjob)
  * @author Ondřej Hruška (MightyPork)
  */
-public class LwjglTextureBackedFont implements IFont {
+class LwjglTextureBackedFontImpl implements IFont {
 	
 	private class CharTile {
 		
@@ -84,26 +84,28 @@ public class LwjglTextureBackedFont implements IFont {
 	
 	/**
 	 * Make a font
-	 * 
+	 *
 	 * @param font original awt font to load
 	 * @param antialias use antialiasing when rendering to cache texture
 	 * @param filter used Gl filter
 	 * @param chars chars to load
 	 */
-	public LwjglTextureBackedFont(java.awt.Font font, boolean antialias, FilterMode filter, String chars) {
+	public LwjglTextureBackedFontImpl(java.awt.Font font, boolean antialias, FilterMode filter, String chars)
+	{
 		this(font, antialias, filter, (" " + chars).toCharArray());
 	}
 	
 	
 	/**
 	 * Make a font
-	 * 
+	 *
 	 * @param font original awt font to load
 	 * @param antialias use antialiasing when rendering to cache texture
 	 * @param filter used Gl filter
 	 * @param chars chars to load
 	 */
-	public LwjglTextureBackedFont(java.awt.Font font, boolean antialias, FilterMode filter, char[] chars) {
+	public LwjglTextureBackedFontImpl(java.awt.Font font, boolean antialias, FilterMode filter, char[] chars)
+	{
 		GLUtils.checkGLContext();
 		
 		this.font = font;
@@ -117,7 +119,7 @@ public class LwjglTextureBackedFont implements IFont {
 	
 	/**
 	 * Create a BufferedImage of the given character
-	 * 
+	 *
 	 * @param ch the character
 	 * @return BufferedImage containing the drawn character
 	 */
@@ -163,7 +165,8 @@ public class LwjglTextureBackedFont implements IFont {
 				public int height;
 				
 				
-				public LoadedGlyph(char c, BufferedImage image) {
+				public LoadedGlyph(char c, BufferedImage image)
+				{
 					this.image = image;
 					this.c = c;
 					this.width = image.getWidth();
@@ -299,7 +302,8 @@ public class LwjglTextureBackedFont implements IFont {
 				
 				byteBuffer = ByteBuffer.allocateDirect(width * height * (bpp / 8)).order(ByteOrder.nativeOrder()).put(newI);
 			} else {
-				byteBuffer = ByteBuffer.allocateDirect(width * height * (bpp / 8)).order(ByteOrder.nativeOrder()).put(((DataBufferByte) (bufferedImage.getData().getDataBuffer())).getData());
+				byteBuffer = ByteBuffer.allocateDirect(width * height * (bpp / 8)).order(ByteOrder.nativeOrder())
+						.put(((DataBufferByte) (bufferedImage.getData().getDataBuffer())).getData());
 			}
 			
 			byteBuffer.flip();
@@ -349,7 +353,7 @@ public class LwjglTextureBackedFont implements IFont {
 	
 	/**
 	 * Get size needed to draw given string
-	 * 
+	 *
 	 * @param text drawn text
 	 * @return needed width
 	 */

@@ -11,45 +11,45 @@ import mightypork.gamecore.input.InputModule;
 
 /**
  * Game backend using LWJGL and SlickUtil
- * 
+ *
  * @author MightyPork
  */
 public class LwjglBackend extends AppBackend {
-	
+
 	private LwjglGraphicsModule graphics;
 	private SlickAudioModule audio;
 	private LwjglInputModule input;
-	
-	
+
+
 	@Override
 	public void initialize()
 	{
 		addChildClient(graphics = new LwjglGraphicsModule());
 		addChildClient(audio = new SlickAudioModule());
 		addChildClient(input = new LwjglInputModule());
-		
+
 		graphics.init();
 		audio.init();
 		input.init();
-		
+
 		app.addInitTask(new InitTaskRedirectSlickLog());
 	}
-	
-	
+
+
 	@Override
 	public GraphicsModule getGraphics()
 	{
 		return graphics;
 	}
-	
-	
+
+
 	@Override
 	public AudioModule getAudio()
 	{
 		return audio;
 	}
-	
-	
+
+
 	@Override
 	public InputModule getInput()
 	{

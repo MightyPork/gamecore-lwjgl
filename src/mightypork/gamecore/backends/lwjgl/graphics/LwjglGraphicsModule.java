@@ -6,9 +6,11 @@ import static org.lwjgl.opengl.GL11.*;
 import java.nio.ByteBuffer;
 import java.util.Stack;
 
+import mightypork.gamecore.backends.lwjgl.graphics.font.LwjglFont;
 import mightypork.gamecore.core.App;
 import mightypork.gamecore.graphics.GraphicsModule;
 import mightypork.gamecore.graphics.Screenshot;
+import mightypork.gamecore.graphics.fonts.DeferredFont;
 import mightypork.gamecore.graphics.textures.DeferredTexture;
 import mightypork.gamecore.graphics.textures.TxQuad;
 import mightypork.gamecore.gui.events.ViewportChangeEvent;
@@ -30,7 +32,7 @@ import org.lwjgl.opengl.GL11;
 
 /**
  * LWJGL rendering module
- * 
+ *
  * @author MightyPork
  */
 public class LwjglGraphicsModule extends GraphicsModule {
@@ -40,7 +42,7 @@ public class LwjglGraphicsModule extends GraphicsModule {
 	/** Currently binded color's alpha multiplier */
 	private double activeColorAlpha = 1;
 	/** Stack of pushed colors */
-	private Stack<Color> colorPushStack = new Stack<>();
+	private final Stack<Color> colorPushStack = new Stack<>();
 	/** Currently binded texture */
 	private SlickTexture activeTexture;
 	
@@ -49,7 +51,7 @@ public class LwjglGraphicsModule extends GraphicsModule {
 	/** FPS the user wants */
 	private int targetFps;
 	/** FPS meter used for measuring actual FPS */
-	private FpsMeter fpsMeter = new FpsMeter();
+	private final FpsMeter fpsMeter = new FpsMeter();
 	
 	/** Flag that at the end of frame, fullscreen should be toggled. */
 	private boolean fullscreenToggleRequested;
@@ -387,8 +389,8 @@ public class LwjglGraphicsModule extends GraphicsModule {
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
 		
-		int w = Display.getWidth();
-		int h = Display.getHeight();
+		final int w = Display.getWidth();
+		final int h = Display.getHeight();
 		
 		glViewport(0, 0, w, h);
 		glOrtho(0, w, h, 0, -1000, 1000);
@@ -414,9 +416,16 @@ public class LwjglGraphicsModule extends GraphicsModule {
 	
 	
 	@Override
-	public DeferredTexture getLazyTexture(String path)
+	public DeferredTexture createDeferredTexture(String path)
 	{
 		return new SlickTexture(path);
+	}
+
+
+	@Override
+	public DeferredFont createDeferredFont(String path)
+	{
+		return new LwjglFont(path);
 	}
 	
 	
@@ -467,7 +476,7 @@ public class LwjglGraphicsModule extends GraphicsModule {
 		try {
 			
 			if (Display.isFullscreen() == fs) return; // no work
-				
+
 			if (fs) {
 				Log.f3("Entering fullscreen.");
 				// save window resize
@@ -549,7 +558,7 @@ public class LwjglGraphicsModule extends GraphicsModule {
 	{
 		try {
 			Display.setDisplayMode(windowDisplayMode = new DisplayMode(width, height));
-		} catch (LWJGLException e) {
+		} catch (final LWJGLException e) {
 			throw new RuntimeException(e);
 		}
 	}
