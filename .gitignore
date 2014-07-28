@@ -1,0 +1,6 @@
+/bin/
+/target/
+/~local/
+*.log
+.attach_pid*
+*~
