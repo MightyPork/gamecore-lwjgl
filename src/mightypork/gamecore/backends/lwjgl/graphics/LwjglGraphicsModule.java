@@ -416,14 +416,14 @@ public class LwjglGraphicsModule extends GraphicsModule {
 	
 	
 	@Override
-	public DeferredTexture createDeferredTexture(String path)
+	public DeferredTexture createTextureResource(String path)
 	{
 		return new SlickTexture(path);
 	}
 
 
 	@Override
-	public DeferredFont createDeferredFont(String path)
+	public DeferredFont createFontResource(String path)
 	{
 		return new LwjglFont(path);
 	}
