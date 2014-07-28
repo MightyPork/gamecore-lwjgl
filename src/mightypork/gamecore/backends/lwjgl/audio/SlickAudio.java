@@ -17,7 +17,7 @@ import org.newdawn.slick.openal.SoundStore;
  *
  * @author Ondřej Hruška (MightyPork)
  */
-public class SlickSound extends DeferredAudio {
+public class SlickAudio extends DeferredAudio {
 
 	private double pauseLoopPosition = 0;
 	private boolean looping = false;
@@ -35,7 +35,7 @@ public class SlickSound extends DeferredAudio {
 	 *
 	 * @param resourceName resource path
 	 */
-	public SlickSound(String resourceName)
+	public SlickAudio(String resourceName)
 	{
 		super(resourceName);
 	}

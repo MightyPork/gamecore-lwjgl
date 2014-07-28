@@ -1,8 +1,8 @@
 package mightypork.gamecore.backends.lwjgl;
 
 
-import mightypork.gamecore.core.InitTask;
-import mightypork.gamecore.core.OptionalInitTask;
+import mightypork.gamecore.core.init.InitTask;
+import mightypork.gamecore.core.init.OptionalInitTask;
 import mightypork.utils.logging.writers.LogWriter;
 
 

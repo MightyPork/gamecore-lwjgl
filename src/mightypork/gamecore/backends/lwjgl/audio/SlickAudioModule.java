@@ -69,7 +69,7 @@ public class SlickAudioModule extends AudioModule {
 	@Override
 	protected DeferredAudio doCreateResource(String res)
 	{
-		return new SlickSound(res);
+		return new SlickAudio(res);
 	}
 
 }
