@@ -6,8 +6,16 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/MightyUtils"/>
 	<classpathentry kind="lib" path="lib/jogg-0.0.7.jar" sourcepath="lib/lwjgl-source-2.8.4.zip"/>
 	<classpathentry kind="lib" path="lib/jorbis-0.0.15.jar" sourcepath="lib/lwjgl-source-2.8.4.zip"/>
-	<classpathentry kind="lib" path="lib/lwjgl_util.jar" sourcepath="lib/lwjgl-source-2.8.4.zip"/>
-	<classpathentry kind="lib" path="lib/lwjgl.jar" sourcepath="lib/lwjgl-source-2.8.4.zip"/>
+	<classpathentry kind="lib" path="lib/lwjgl_util.jar" sourcepath="lib/lwjgl-source-2.8.4.zip">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="GameCore-LWJGL/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/lwjgl.jar" sourcepath="lib/lwjgl-source-2.8.4.zip">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="GameCore-LWJGL/lib"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="lib/slick-util.jar" sourcepath="lib/slick-util-src.zip"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -47,6 +47,8 @@ public class SlickAudio extends DeferredAudio {
 		final String ext = FileUtil.getExtension(resource);
 
 		try(final InputStream stream = FileUtil.getResource(resource)) {
+			
+			if (stream == null) throw new IOException("Not found: " + resource);
 
 			if (ext.equalsIgnoreCase("ogg")) {
 				backingAudio = SoundStore.get().getOgg(resource, stream);

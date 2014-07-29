@@ -84,8 +84,15 @@ public class LwjglGraphicsModule extends GraphicsModule {
 	@Override
 	public void init()
 	{
+	}
+
+
+	@Override
+	public void createDisplay()
+	{
 		try {
 			Display.create();
+
 		} catch (final Exception e) {
 			throw new RuntimeException("Could not initialize display.", e);
 		}
