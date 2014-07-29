@@ -12,10 +12,10 @@ import mightypork.utils.logging.writers.LogWriter;
  * @author Ondřej Hruška (MightyPork)
  */
 class SlickLogRedirector implements org.newdawn.slick.util.LogSystem {
-
+	
 	LogWriter writer;
-
-
+	
+	
 	/**
 	 * @param log log to redirect into
 	 */
@@ -23,54 +23,54 @@ class SlickLogRedirector implements org.newdawn.slick.util.LogSystem {
 	{
 		this.writer = log;
 	}
-
-
+	
+	
 	@Override
 	public void error(String msg, Throwable e)
 	{
 		writer.log(Level.SEVERE, msg, e);
 	}
-
-
+	
+	
 	@Override
 	public void error(Throwable e)
 	{
 		writer.log(Level.SEVERE, null, e);
 	}
-
-
+	
+	
 	@Override
 	public void error(String msg)
 	{
 		writer.log(Level.SEVERE, msg);
 	}
-
-
+	
+	
 	@Override
 	public void warn(String msg)
 	{
 		writer.log(Level.WARNING, msg);
 	}
-
-
+	
+	
 	@Override
 	public void warn(String msg, Throwable e)
 	{
 		writer.log(Level.WARNING, msg, e);
 	}
-
-
+	
+	
 	@Override
 	public void info(String msg)
 	{
 		writer.log(Level.INFO, msg);
 	}
-
-
+	
+	
 	@Override
 	public void debug(String msg)
 	{
 		writer.log(Level.FINEST, msg);
 	}
-
+	
 }

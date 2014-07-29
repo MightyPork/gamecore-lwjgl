@@ -19,14 +19,14 @@ import mightypork.gamecore.graphics.Screenshot;
  * @author Ondřej Hruška (MightyPork)
  */
 public class AwtScreenshot implements Screenshot {
-	
+
 	private final int width;
 	private final int height;
 	private final int bpp;
 	private final ByteBuffer bytes;
 	private BufferedImage image;
-	
-	
+
+
 	/**
 	 * @param width image width
 	 * @param height image height
@@ -40,8 +40,8 @@ public class AwtScreenshot implements Screenshot {
 		this.bpp = bpp;
 		this.bytes = buffer;
 	}
-	
-	
+
+
 	/**
 	 * Extract to an image.<br>
 	 * Subsequent calls will use a cached value.
@@ -51,9 +51,9 @@ public class AwtScreenshot implements Screenshot {
 	public BufferedImage getImage()
 	{
 		if (image != null) return image;
-		
+
 		image = new BufferedImage(this.width, this.height, BufferedImage.TYPE_INT_RGB);
-		
+
 		// convert to a buffered image
 		for (int x = 0; x < this.width; x++) {
 			for (int y = 0; y < this.height; y++) {
@@ -64,11 +64,11 @@ public class AwtScreenshot implements Screenshot {
 				image.setRGB(x, this.height - (y + 1), (0xFF << 24) | (r << 16) | (g << 8) | b);
 			}
 		}
-		
+
 		return image;
 	}
-	
-	
+
+
 	/**
 	 * Save to a file.<br>
 	 * Cached value is used if any.

@@ -31,7 +31,12 @@ public class LwjglBackend extends AppBackend {
 		graphics.init();
 		audio.init();
 		input.init();
+	}
 
+
+	@Override
+	public void addInitTasks()
+	{
 		app.addInitTask(new InitTaskRedirectSlickLog());
 	}
 

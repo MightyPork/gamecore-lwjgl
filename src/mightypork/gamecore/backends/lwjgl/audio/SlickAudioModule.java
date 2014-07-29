@@ -20,10 +20,10 @@ import org.newdawn.slick.openal.SoundStore;
  * @author Ondřej Hruška (MightyPork)
  */
 public class SlickAudioModule extends AudioModule {
-
+	
 	private final VectVar listenerPos = Vect.makeVar();
-
-
+	
+	
 	@Override
 	public void init()
 	{
@@ -31,8 +31,8 @@ public class SlickAudioModule extends AudioModule {
 		SoundStore.get().init();
 		setListenerPos(Vect.ZERO);
 	}
-
-
+	
+	
 	@Override
 	public void setListenerPos(Vect pos)
 	{
@@ -49,27 +49,27 @@ public class SlickAudioModule extends AudioModule {
 		BufferHelper.fill(buf6, 0.0f, 0.0f, -1.0f, 0.0f, 1.0f, 0.0f);
 		AL10.alListener(AL10.AL_ORIENTATION, buf6);
 	}
-
-
+	
+	
 	@Override
 	public Vect getListenerPos()
 	{
 		return listenerPos;
 	}
-
-
+	
+	
 	@Override
 	protected void deinitSoundSystem()
 	{
 		SoundStore.get().clear();
 		AL.destroy();
 	}
-
-
+	
+	
 	@Override
 	protected DeferredAudio doCreateResource(String res)
 	{
 		return new SlickAudio(res);
 	}
-
+	
 }

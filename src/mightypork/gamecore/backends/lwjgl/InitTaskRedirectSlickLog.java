@@ -35,4 +35,11 @@ public class InitTaskRedirectSlickLog extends InitTask {
 	{
 		return new String[] { "log" };
 	}
+
+
+	@Override
+	public int getPriority()
+	{
+		return PRIO_FIRST;
+	}
 }

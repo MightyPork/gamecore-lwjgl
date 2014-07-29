@@ -23,10 +23,10 @@ import mightypork.utils.math.constraints.vect.Vect;
 @MustLoadInRenderingContext
 @Alias(name = "Font")
 public class LwjglFont extends DeferredFont {
-	
+
 	private IFont font = null;
-	
-	
+
+
 	/**
 	 * A font from resource
 	 *
@@ -36,18 +36,18 @@ public class LwjglFont extends DeferredFont {
 	{
 		super(resourcePath);
 	}
-	
-	
+
+
 	@Override
 	protected synchronized final void loadResource(String path) throws IOException
 	{
 		final Font awtFont = getAwtFont(path, (float) size, style.numval);
-		
+
 		font = new LwjglTextureBackedFontImpl(awtFont, antialias, filter, chars);
 		font.setDiscardRatio(discardTop, discardBottom);
 	}
-	
-	
+
+
 	/**
 	 * Get a font for a resource path / name
 	 *
@@ -60,9 +60,9 @@ public class LwjglFont extends DeferredFont {
 	protected Font getAwtFont(String resource, float size, int style) throws IOException
 	{
 		try(InputStream in = FileUtil.getResource(resource)) {
-
-			Font awtFont = null;
 			
+			Font awtFont = null;
+
 			if (in != null) {
 				awtFont = Font.createFont(Font.TRUETYPE_FONT, in);
 				awtFont = awtFont.deriveFont(size);
@@ -70,14 +70,14 @@ public class LwjglFont extends DeferredFont {
 			} else {
 				awtFont = new Font(/* font name */resource, style, (int) size);
 			}
-			
+
 			return awtFont;
 		} catch (final FontFormatException e) {
 			throw new IOException("Could not load font, bad format.", e);
 		}
 	}
-	
-	
+
+
 	/**
 	 * Draw string
 	 *
@@ -88,11 +88,11 @@ public class LwjglFont extends DeferredFont {
 	public void draw(String str, Color color)
 	{
 		if (!ensureLoaded()) return;
-		
+
 		font.draw(str, color);
 	}
-	
-	
+
+
 	/**
 	 * Get size needed to render give string
 	 *
@@ -103,11 +103,11 @@ public class LwjglFont extends DeferredFont {
 	public Vect getNeededSpace(String text)
 	{
 		if (!ensureLoaded()) return Vect.ZERO;
-		
+
 		return font.getNeededSpace(text);
 	}
-	
-	
+
+
 	/**
 	 * @return font height
 	 */
@@ -115,27 +115,27 @@ public class LwjglFont extends DeferredFont {
 	public int getLineHeight()
 	{
 		if (!ensureLoaded()) return 0;
-		
+
 		return font.getLineHeight();
 	}
-	
-	
+
+
 	@Override
 	public int getFontSize()
 	{
 		if (!ensureLoaded()) return 0;
-		
+
 		return font.getFontSize();
 	}
-	
-	
+
+
 	@Override
 	public int getWidth(String text)
 	{
 		return font.getWidth(text);
 	}
-	
-	
+
+
 	@Override
 	public void destroy()
 	{

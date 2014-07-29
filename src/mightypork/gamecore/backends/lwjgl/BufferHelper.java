@@ -12,7 +12,7 @@ import org.lwjgl.BufferUtils;
  * @author Ondřej Hruška (MightyPork)
  */
 public class BufferHelper {
-	
+
 	/**
 	 * Create java.nio.FloatBuffer of given floats, and flip it.
 	 *
@@ -23,8 +23,8 @@ public class BufferHelper {
 	{
 		return (FloatBuffer) BufferUtils.createFloatBuffer(obj.length).put(obj).flip();
 	}
-	
-	
+
+
 	/**
 	 * Fill java.nio.FloatBuffer with floats or float array
 	 *
@@ -36,8 +36,8 @@ public class BufferHelper {
 		buff.put(obj);
 		buff.flip();
 	}
-	
-	
+
+
 	/**
 	 * Create new java.nio.FloatBuffer of given length
 	 *
@@ -48,5 +48,5 @@ public class BufferHelper {
 	{
 		return BufferUtils.createFloatBuffer(count);
 	}
-	
+
 }
